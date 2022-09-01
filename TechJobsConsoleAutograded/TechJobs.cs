@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace TechJobsConsole
 {
@@ -45,6 +46,7 @@ namespace TechJobsConsole
                     else
                     {
                         List<string> results = JobData.FindAll(columnChoice);
+                        results.Sort();
 
                         Console.WriteLine(Environment.NewLine + "*** All " + columnChoices[columnChoice] + " Values ***");
                         foreach (string item in results)
@@ -135,7 +137,26 @@ namespace TechJobsConsole
 
         public void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
+            if (someJobs.Count > 0)
+            {
+                foreach (Dictionary<string, string> job in someJobs)
+                {
+                    Console.WriteLine("*****");
+                    foreach (KeyValuePair<string, string> i in job)
+                    {
+                        Console.WriteLine(string.Format("{0}: {1}", i.Key, i.Value));
+                    }
+                    Console.WriteLine("*****");
+                    Console.WriteLine($"{Environment.NewLine}");
+
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("No results found.");
+            }
+
         }
      }
 }

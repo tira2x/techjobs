@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -58,8 +59,12 @@ namespace TechJobsConsole
 
                     if (aValue.ToLower().Contains(value.ToLower()))
                     {
-                        jobs.Add(row);
+                        if (!jobs.Contains(row))
+                        {
+                            jobs.Add(row);
+                        }
                     }
+
                 }
             }
 
